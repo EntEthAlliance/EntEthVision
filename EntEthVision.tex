@@ -74,7 +74,7 @@ Our contributions in this paper are as follows:
 \item network connectivity: consensus algorithms (Simple Consensus, PBFT, HoneyBadger, Tendermint, Ouroboros)
 \item Configurable privacy involving user confidentiality and tx privacy
 \end{enumerate}
-\item We propose an approach to Contract-as-a-Protocol updates based on gas usage
+% \item We propose an approach to Contract-as-a-Protocol updates based on gas usage
 \item We describe features that are relevant in the long term vision for Enterprise Ethereum, including governance frameworks, secure computation, and token management. 
 \end{enumerate}
 
@@ -198,9 +198,11 @@ Many aspects of interoperability are enabled through abstraction and modularity,
 
 \section{Updating the Ethereum Protocol}
 
-We consider two important features for development in the short-term: pluggable consensus and configurable privacy. In this section, we describe why these two features are relevant for the Enterprise Ethereum community. Indeed, these features are relevant based on the fact that there is much existing work implementing consensus algorithms and configurable privacy. 
+We consider two important features for development in the short-term: pluggable consensus and configurable privacy. In this section, we describe why these two features are relevant for the Enterprise Ethereum community. 
+%Indeed, these features are relevant based on the fact that there is much existing work implementing consensus algorithms and configurable privacy. 
 
-We also propose a structured approach for modularizing and abstracting the Ethereum protocol, focusing on a common use case of configurable gas usage; validation of our proposed approach will help determine how to achieve modularization and abstraction of core Ethereum protocols, and can form a basis for updating challenging protocols involving the underlying networking layers (for pluggable consensus) and configurable privacy.
+% gas contract approach
+% We also propose a structured approach for modularizing and abstracting the Ethereum protocol, focusing on a common use case of configurable gas usage; validation of our proposed approach will help determine how to achieve modularization and abstraction of core Ethereum protocols, and can form a basis for updating challenging protocols involving the underlying networking layers (for pluggable consensus) and configurable privacy.
 
 The Ethereum protocol specifies that nodes choose the next block for the longest-chain based on Proof of Work (PoW), a computation that is expensive in terms of time, electricity, and memory, a mechanism that dissuades invalid block proposals. The PoW mechanism is effective for pacing the growth of the Ethereum network and protocol as it matures; however, this means that currently blocks can only be committed to the blockchain at intervals on the order of a block around every 10 seconds, thus limiting the number of transactions that each block can accept. With modern-day organizations providing online services to hundreds of millions of users, there is an obvious need to extend the Ethereum protocol to support the scale of existing enterprise technologies. 
 
@@ -261,13 +263,14 @@ Governance is a big topic across the blockchain and DLT industry. Its applicabil
 
 We are all anticipating the enormous benefits of transacting directly between industry partners on shared digital infrastructure enabled by the blockchain, but what happens when those shared programs need to be versioned and updated? The answer to that and related questions will help us develop useful standards for this kind of shared administration, such that all relevant participants could be involved in the vetting of, voting for and deploying of updates to their shared system.
 
-Enterprise Ethereum could look to explore the development of contract interfaces and classes for shared administration, in addition to design patterns applicable to the updating of operational code on already deployed systems. To provide an example, consider the following code used in the Uport identity system:
+Enterprise Ethereum could look to explore the development of contract interfaces and classes for shared administration, in addition to design patterns applicable to the updating of operational code on already deployed systems. To provide an example, consider the following code used in the uPort identity system:
 \newline
 \newline
 https://github.com/ConsenSys/uport-proxy/blob/master/contracts/Owned.sol
 \newline
 \newline
-This contract provides a level of governance over any contract that inherits it. It could be a starting point towards an elaborated and defined standard, which would enable multiple dApp developers to build various Administration Tools, for smart contract systems, which interoperate with one another by way of these standards. Standards for shared administration would likely start on application layer smart contract systems and then be extended from there to include protocol level updates to private chains operating between numerous industry partners; this would be a seamless extension if the CAAP approach is successful.
+This contract provides a level of governance over any contract that inherits it. It could be a starting point towards an elaborated and defined standard, which would enable multiple dApp developers to build various Administration Tools, for smart contract systems, which interoperate with one another by way of these standards. Standards for shared administration would likely start on application layer smart contract systems and then be extended from there to include protocol level updates to private chains operating between numerous industry partners.
+%; this would be a seamless extension if the CAAP approach is successful.
 
 We can imagine now a future scenario where a new consortium chain consensus algorithm is developed that shows marked improvement in some important performance benchmark; with these shared administration standards that span both the application and the protocol layers, there would be a clear path towards making and tracking updates to the jointly administered system and transitioning to the new consensus algorithm. In this way, no matter which vendors were chosen for smart contract development or post deployment administration, all parties could reliably administer their shared infrastructure together. 
 
