@@ -6,9 +6,10 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{epstopdf}
+\usepackage{verbatim}
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
-\title{Enterprise Ethereum Vision}
+\title{Enterprise Ethereum Vision {\scriptsize (v3.0)}}
 %\author{The Author}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -81,7 +82,7 @@ Our contributions in this paper are as follows:
 
 Enterprise Ethereum has four clear goals for 2017:
 \begin{enumerate}
-\item Develop a sufficiently modular Ethereum implementation to separate and define clear interfaces between networking and storage layers -- that is a prototype for ?pluggable consensus? that minimizes the code changes required to switch consensus algorithms
+\item Develop a sufficiently modular Ethereum implementation to separate and define clear interfaces between networking and storage layers -- that is a prototype for \emph{pluggable consensus} that minimizes the code changes required to switch consensus algorithms
   \begin{enumerate}
   \item An emphasis on interoperability, including public Ethereum, enterprise and legacy systems, and alternative blockchain protocols
   \item Stay close to the public Ethereum code and roadmap
@@ -107,7 +108,7 @@ Enterprise Ethereum has four clear goals for 2017:
   \item Parallelisation and horizontal scaling
   \end{enumerate}
 \item Develop a Version 1 specification for Enterprise Ethereum, based on the learnings from the above plus the roadmap and requirements gathered from members, i.e., Produce a reference implementation thereof
-\item Leverage a robust governance process to insure alignment and agreement on approach
+\item Leverage a robust governance process to ensure alignment and agreement on approaches
 \end{enumerate}
 
 \subsection{Modularised Ethereum implementation with 'pluggable consensus'}
@@ -128,9 +129,12 @@ In parallel with these efforts, we have begun reviewing potential consensus algo
 
 \end{itemize}
 
-Our aim is to deliver an abstracted and modularised Ethereum implementation (most likely Python) with a sample consortia consensus algorithm in 1H 2017.
+The consensus algorithms that are being considered for Enterprise Ethereum are novel, and the abstractions, approaches, and scenarios needed to integrate consensus algorithms will emerge as the consensus algorithms become more prevalent in diverse Enterprise use cases. The current approach of Proof of Work is based on Kademlia~\cite{Maymounkov:2002:KPI:646334.687801} without distributed hash table functionality, thereby tying the current consensus algorithm to an arbitrary peer-to-peer network communication protocol. It is important to abstract consensus algorithms from the network layers, as it would allow consensus to work over multiple communication modalities in addition to the current peer-to-peer approach. It would further permit the possibility of running multiple consensus algorithms in environments where multiple permissioned blockchains are working together. Abstracting network layers then allows a reactive approach to processing streams of blocks, akin to moving from batch-processing with Hadoop to stream-processing with Kafka. 
+Our efforts will promote stability and capture a range of settlement finality options that will depend on various Enterprise environments.
+Our aim is to deliver an abstracted and modularised Ethereum implementation (most likely Python) with a sample consortia consensus algorithm.
+% in 1H 2017. 
 
-The second highest importance areas for investigation and development are privacy and permissioning (auth/auth).  Certain code bases being evaluated by Enterprise Ethereum, such as Quorum, include implementations of these features.  And these features (generally) benefit from modularization.  So we anticipate that these features will follow the client modularization and pluggable consensus, but this is for prioritization by the members.
+The second highest importance areas for investigation and development are privacy and permissioning (authentication/authorization).  Certain code bases being evaluated by Enterprise Ethereum, such as Quorum, include implementations of these features.  And these features (generally) benefit from modularization.  So we anticipate that these features will follow the client modularization and pluggable consensus, but this is for prioritization by the members.
 
 \subsection{Version 1 Enterprise Ethereum Specification}
 
@@ -146,7 +150,7 @@ The goal of Enterprise Ethereum is not simply to develop an implementation but t
 
 In addition to evolving well defined interfaces from the initial abstraction and modularization work, Enterprise Ethereum aims to accelerate ecosystem development by increasing the availability of APIs for integration with development, devops and management tools as well as legacy system integration. For example, bulk data loading is currently challenging in 'standard' Ethereum, though a number of vendor implementations simplify this.
 
-But perhaps most importantly, developing the Enterprise Ethereum specification demands collaboration between the members and through the working groups to establish clear priorities and architectural approach. In addition to the core specification, we should aim to develop and evolve the road map contained in this document (which we hope will becoming a living document that evolves over time).
+But perhaps most importantly, developing the Enterprise Ethereum specification demands collaboration between the members and through the working groups to establish clear priorities and architectural approach. In addition to the core specification, we should aim to develop and evolve the road map contained in this document.
 
 \subsection{Robust governance}
 
@@ -186,7 +190,7 @@ While it may be early to discuss cross blockchain protocol interoperability, alr
 \begin{itemize}
 \item Ability to switch components at various layers of the Enterprise Ethereum while maintaining application portability and network transactions
 \item Ability to provide non-standard extensions that are interoperable with the core specification
-\item Inbound and outbound data interfaces, and EVM ?hooks?
+\item Inbound and outbound data interfaces, and EVM \emph{hooks}
 \item Public chain compatibility
 \end{itemize}
 
@@ -205,7 +209,8 @@ One way to reduce block time is to reduce the difficulty of the PoW computation,
 % https://bitshares.org/technology/delegated-proof-of-stake-consensus/
 % Ouroboros [http://ia.cr/2016/889]
 % https://blog.ethereum.org/2016/12/06/history-casper-chapter-1/
-To improve scalability, alternatives to the expensive Proof of Work block consensus protocols focus on providing block consensus using different relevant blockchain properties. For example, both Delegated Proof of Stake~\cite{bitshares_dpos} and Ouroboros~\cite{cryptoeprint:2016:889} rely on Proof of Stake to choose blocks based on a proportion of stake value, and Proof of Authority [https://github.com/ethereum/guide/blob/master/poa.md] relies on the notion that authoritative nodes choose blocks. Such approaches focus less on the network layer and instead rely on communication between distributed nodes as provided by a client implementation. Further dividing the space are where consensus protocols are implemented, such as in the case of Casper~\cite{VZ_CasperHistory}, a Proof of Stake protocol that is intended to be expressed as a smart contract.
+% https://github.com/ethereum/guide/blob/master/poa.md
+To improve scalability, alternatives to the expensive Proof of Work block consensus protocols focus on providing block consensus using different relevant blockchain properties. For example, both Delegated Proof of Stake~\cite{bitshares_dpos} and Ouroboros~\cite{cryptoeprint:2016:889} rely on Proof of Stake to choose blocks based on a proportion of stake value, and Proof of Authority~\cite{poa_url} relies on the notion that authoritative nodes choose blocks. Such approaches focus less on the network layer and instead rely on communication between distributed nodes as provided by a client implementation. Further dividing the space are where consensus protocols are implemented, such as in the case of Casper~\cite{VZ_CasperHistory}, a Proof of Stake protocol that is intended to be expressed as a smart contract.
 
 % [Andrew Miller and Yu Xia and Kyle Croman and Elaine Shi and Dawn Song, The Honey Badger of BFT Protocols]
 % https://github.com/HydraChain/hydrachain
@@ -220,13 +225,14 @@ Consensus protocols for the Ethereum blockchain need to perform atomic broadcast
 % https://github.com/cosmos/cosmos/blob/master/WHITEPAPER.md
 Approaches that combine block and network consensus protocols, include HydraChain and Ethermint~\cite{ethermint_url}. Ethermint leverages Tendermint's block and network consensus protocols and adding the Cosmos~\cite{cosmos_whitepaper} specification of how multiple blockchains can interact with one another.   
 
+% http://www.jeffcoleman.ca/state-channels/
 Other approaches that aim to address the challenge of PoW's scalability include sharding, parallelization, and state channels. 
+Scaling of transaction throughput by executing off-chain transactions between several parties at a fast pace is generally referred to as state channels~\cite{statechannels_description_url}, which leverage optimizations of reduced or non-existent gas costs; state channels generally place a record of the start and completion of off-chain transactions on-chain.
 
-[Paragraphs on sharding, parallelization, and state channels]
+%[Paragraphs on sharding, parallelization, and state channels]
 
-Scaling of transaction throughput by executing off-chain transactions between several parties at a fast pace is generally referred to as state channels [http://www.jeffcoleman.ca/state-channels/], which leverage optimizations of reduced or non-existent gas costs. State channels generally place a record of the start of the off-chain transactions on the chain
-
-\subsection{An Approach to Updating the Ethereum Protocol [TODO]}
+\begin{comment}
+\subsection{An Approach to Updating the Ethereum Protocol}
 
 We propose an approach for updating Ethereum protocols using a gas usage model as an example.The example considers that gas usage is hard-code into client implementations:
 \begin{enumerate}
@@ -237,11 +243,12 @@ We propose an approach for updating Ethereum protocols using a gas usage model a
 \end{enumerate}
 Implementation:
 \begin{enumerate}
-\item PyEthereumCore?a wired-together set of modules that can connect to public Ethereum. It might have several editions or configurations: standard client, light client, archiving client, ....
-\item PyEthereumEnterprise?many different configurations of modules that are organized to achieve a specific set of requirements that are minimally necessary to subserve a set of use cases.
+\item PyEthereumCore: a wired-together set of modules that can connect to public Ethereum. It might have several editions or configurations: standard client, light client, archiving client, ....
+\item PyEthereumEnterprise: many different configurations of modules that are organized to achieve a specific set of requirements that are minimally necessary to subserve a set of use cases.
 \end{enumerate}
 
-E.g. if BankA has a set of use cases that require low latency, medium transactions per second throughput, and globally dispersed private permissioned nodes, but does not require transaction confidentiality among subsets of users on the network, then a set of off-the-shelf components can be wired together for that and appropriate parameters can be set. These parameters would be available based on benchmarking work that the EEF will do.
+E.g. if BankA has a set of use cases that require low latency, medium transactions per second throughput, and globally dispersed private permissioned nodes, but does not require transaction confidentiality among subsets of users on the network, then a set of off-the-shelf components can be wired together for that and appropriate parameters can be set. These parameters would be available based on benchmarking work that the EEA will do.
+\end{comment}
 
 \section{Updating the Enterprise Ethereum Protocol}
 
@@ -255,9 +262,11 @@ Governance is a big topic across the blockchain and DLT industry. Its applicabil
 We are all anticipating the enormous benefits of transacting directly between industry partners on shared digital infrastructure enabled by the blockchain, but what happens when those shared programs need to be versioned and updated? The answer to that and related questions will help us develop useful standards for this kind of shared administration, such that all relevant participants could be involved in the vetting of, voting for and deploying of updates to their shared system.
 
 Enterprise Ethereum could look to explore the development of contract interfaces and classes for shared administration, in addition to design patterns applicable to the updating of operational code on already deployed systems. To provide an example, consider the following code used in the Uport identity system:
-
+\newline
+\newline
 https://github.com/ConsenSys/uport-proxy/blob/master/contracts/Owned.sol
-
+\newline
+\newline
 This contract provides a level of governance over any contract that inherits it. It could be a starting point towards an elaborated and defined standard, which would enable multiple dApp developers to build various Administration Tools, for smart contract systems, which interoperate with one another by way of these standards. Standards for shared administration would likely start on application layer smart contract systems and then be extended from there to include protocol level updates to private chains operating between numerous industry partners; this would be a seamless extension if the CAAP approach is successful.
 
 We can imagine now a future scenario where a new consortium chain consensus algorithm is developed that shows marked improvement in some important performance benchmark; with these shared administration standards that span both the application and the protocol layers, there would be a clear path towards making and tracking updates to the jointly administered system and transitioning to the new consensus algorithm. In this way, no matter which vendors were chosen for smart contract development or post deployment administration, all parties could reliably administer their shared infrastructure together. 
@@ -265,21 +274,37 @@ We can imagine now a future scenario where a new consortium chain consensus algo
 % https://github.com/ethereum/EIPs
 In the context of Enterprise Ethereum, whose goal is to coordinate Enterprise requirements, there needs to be a way to coordinate the activities. Currently, the process for integrating improvements to the Ethereum protocol is to submit an Ethereum Improvement Proposal~\cite{eips_url} using the git versioning model. In this model, a user who is interested in recommending a change to the Ethereum protocol would first fork the EIP repository as a copy. The user would then create a new EIP document that describes the motivation, specification, and impact of the change; the EIP is committed to the user's own repository. Alongside the EIP document, the user has the option of writing code that implements the EIP. Finally, the user would submit a pull request to the main repository for feedback and review of the EIP and associated code. 
 
-In an Enterprise setting, organizations may participate within the community at multiple levels, such as developers and managers, and requiring each to have a github handle is not efficient. Instead, using the blockchain, while leveraging the existing git-based model, provides support for modern Enterprise Ethereum governance mechanisms (an ?eat-our-own-dog-food approach?). An Enterprise extension to the current EIP process onto the Ethereum blockchain is desirable for a few reasons. First, organizational involvement in the changes to the Enterprise Ethereum protocol would be captured as formal records. Second, by moving organizations intentions through smart contract, the process involving multiple organizations can be formalized and incentivized. Thus, by moving the governance architecture onto the Ethereum blockchain, organizations have a clear contractual mechanism by which to conduct their Enterprise Ethereum proposals and activities. 
+In an Enterprise setting, organizations may participate within the community at multiple levels, such as developers and managers, and requiring each to have a github handle is not efficient. Instead, using the blockchain, while leveraging the existing git-based model, provides support for modern Enterprise Ethereum governance mechanisms (an 'eat-our-own-dog-food approach'). An Enterprise extension to the current EIP process onto the Ethereum blockchain is desirable for a few reasons. First, organizational involvement in the changes to the Enterprise Ethereum protocol would be captured as formal records. Second, by moving organizations intentions through smart contract, the process involving multiple organizations can be formalized and incentivized. Thus, by moving the governance architecture onto the Ethereum blockchain, organizations have a clear contractual mechanism by which to conduct their Enterprise Ethereum proposals and activities. 
 
-Several blockchain-based governance tools on are already in existence, under active development, with integration in progress. uPort is a self-sovereign identity platform that can support personal and organizational identity. It consists of a mobile app that manages users' keys and credentials to sign transactions, as well as developer libraries for simple integration.  uPort released a Developer Alpha version for preliminary testing on January 4th, 2017 and intends to support identity needs of the foundation by the end of February 2017. uPort is currently being incubated at ConsenSys. BoardRoom is an application for making and voting for proposals at an organizational level, committee level and project level. Balanc3 is currently in active development and will be able to create financial assets, transfer, and report all financial transactions. 
+Several blockchain-based governance tools on are already in existence, under active development, with integration in progress. uPort is a self-sovereign identity platform that can support personal and organizational identity. It consists of a mobile app that manages users' keys and credentials to sign transactions, as well as developer libraries for simple integration.  uPort released a Developer Alpha version for preliminary testing and intends to support identity needs of the foundation. uPort is currently being incubated at ConsenSys. BoardRoom is an application for making and voting for proposals at an organizational level, committee level and project level. Balanc3 is currently in active development and will be able to create financial assets, transfer, and report all financial transactions. 
 
-\subsection{Oracle / Data Feed Approaches}
+% on January 4th, 2017
+% by the end of February 2017
 
-The consumption of data external to the blockchain (for example - forex price feeds) is paramount to real-world applications of smart contract based systems. As a result, ensuring that the data being ingested is from a trusted source becomes critical to these applications.
+\subsection{Trusted Computing and Oracles/Data Feeds}
 
+There is increasing interest in leveraging the trusted computing support which is starting to appear in mainstream hardware within decentralized applications to enhance their security characteristics. Intel SGX is the prime example of such support.
+%
+SGX provides \emph{enclaves}, memory-encrypted on-silicon circuits which can only run signed, attested code, in a way such that other processes cannot access it. These have been characterized as reverse-sandboxes, which don't trust the OS which they are running on top of. 
+%
+Proof of Elapsed Time (POET) within an enclave is Intel's consensus method within their Sawtooth Lake DLT. Microsoft offer code execution within SGX enclaves as an option in their Cryptlets.
+%
+ARM offer similar functionality to SGX with their TrustZone and TEE (Trusted Execution Environment).
+
+The consumption of data external to the blockchain (for example - forex price feeds) is paramount to real-world applications of smart contract based systems. When considering important use cases whereby data feeds are automatically shared through the blockchain as a way to trigger contract execution, ensuring that the data being ingested is from a trusted source becomes critical to these applications. Another prominent use case for data feeds is for data integration of legacy systems, such as for reporting based on identity and identifiers already captured in existing systems.
+%
+There is a close relationship between trusted hardware and data feeds that are ingested into a blockchain. As one of the design goals of the Ethereum virtual machine is to be deterministic, network access is not provided as an instruction thereby making data pushes into the blockchain one of the easiest ways to ingest data. 
+%
 As data feeds are intrinsically external to the blockchain protocol, there is not an immediately apparent protocol-level implementation which can be leveraged by the Enterprise Ethereum project. However, there are best practices and design patterns to take into consideration when considering data feeds for Ethereum smart contracts.
 
-When designing a data feed system designed for blockchains, two important things to consider are: the source of the data, and the channel with which the data is being transmitted. Within a single enterprise, for single purpose (?well trusted?) applications, both the source and the channel can be as simple as a periodic task which consumes a legacy data feed and publishes it to a destination contract on the blockchain. However, in environments where multiple counterparties need to agree on the output of data feeds, due diligence should be applied.
+When designing a data feed system designed for blockchains, two important things to consider are: the source of the data, and the channel with which the data is being transmitted. Within a single enterprise, for single purpose (i.e., well trusted) applications, both the source and the channel can be as simple as a periodic task which consumes a legacy data feed and publishes it to a destination contract on the blockchain. However, in environments where multiple counterparties need to agree on the output of data feeds, due diligence should be applied.
 
-There are efforts in the broader distributed ledger ecosystem which are attempting to tackle the data feed challenge. From a research perspective, there are initiatives such as Town Crier from the Computer Science department at Cornell which seek to ?present an authenticated data feed system? which ?acts as a bridge between smart contracts and existing web sites, which are already commonly trusted for non-blockchain applications.? From a commercial perspective, initiatives such as Microsoft's Cryptlet Fabric (as a part of the broader Bletchley initiative) focus on leveraging hardware enclaves as the basis for a hardware enabled data oracles.
+There are efforts in the broader distributed ledger ecosystem which are attempting to tackle the data feed challenge. From a research perspective, there are initiatives such as Town Crier from the Computer Science department at Cornell which seek to "present an authenticated data feed system" which "acts as a bridge between smart contracts and existing web sites, which are already commonly trusted for non-blockchain applications". From a commercial perspective, initiatives such as Microsoft's Cryptlet Fabric (as a part of the broader Bletchley initiative) focus on leveraging hardware enclaves as the basis for a hardware enabled data oracles.
 
-While the Ethereum Enterprise initiative will focus on protocol level implementations at the onset, with time, efforts to establish meaningful design patterns around oracle data (and perhaps more importantly, how to apply penalties for bad actors publishing malicious data) are expected to emerge from members of the Foundation.
+While hardware-based approaches provide performant security features, hardware solutions rely on expense and vendor trust. Secure hardware is prevalent in server environments, and its prevalence continues to increase through integration in IoT and network infrastructure; however, due to the myriad of solutions without a standardized API, hardware is more challenging to support. Enterprise needs depend on the level of trust of actors working together in a permissioned enviornment. As a result, there is also a desire to support software-based enclaves as an option; open source enables community review and reduces cost. 
+As security needs in blockchain technology evolves, enterprises will be able to better understand and provide additional offerings.
+
+While the Ethereum Enterprise initiative will focus on protocol level implementations at the onset, with time, efforts to establish meaningful design patterns around oracle data (and perhaps more importantly, how to apply penalties for bad actors publishing malicious data) are expected to emerge from members of the Foundation. 
 
 \subsection{Storage}
 
@@ -289,17 +314,7 @@ There are two projects with very similar goals which are leading development eff
 
 A number of Ethereum projects are already using IPFS, which is in a more mature state than Swarm. Both projects have two conceptual layers - a chunking file system layer and an incentives layer. See IPFS and Swarm summary, written by Viktor Tron. The incentives layers for both systems are both in their early days, but will both be built using Ethereum. The design of the incentives layers will be key to the long-term success of these systems.
 
-\subsection{Trusted Computing}
-
-There is increasing interest in leveraging the trusted computing support which is starting to appear in mainstream hardware within decentralized applications to enhance their security characteristics. Intel SGX is the prime example of such support.
-
-SGX provides ?enclaves?, which are memory-encrypted on-silicon circuits which can only run signed, attested code, in a way such that other processes cannot access it. These have been characterized as reverse-sandboxes, which don't trust the OS which they are running on top of. 
-
-Proof of Elapsed Time (POET) within an enclave is Intel's consensus method within their Sawtooth Lake DLT. Microsoft offer code execution within SGX enclaves as an option in their Cryptlets.
-
-ARM offer similar functionality to SGX with their TrustZone and TEE (Trusted Execution Environment).
-
-\subsection{Performance improvement and optimization [TODO]}
+\subsection{Performance improvement and optimization}
 
 The Ethereum protocol continues to retain success as a world blockchain-based computer in large part due to the feasibility of executing tens of transactions of per second, which avoids technical challenges associated with computing at scale in a distributed, trustless context.
 In a setting where many of the parameters involving Enterprise users vary, such as the number of users and their geographic location, and the number of transactions executed amongst participants having varying connectivity (such as due to timezone), close awareness of the performance capabilities of blockchain systems an organization would choose to deploy is of vital importance. 
@@ -331,7 +346,7 @@ In a setting where many of the parameters involving Enterprise users vary, such 
 % https://www.activiti.org/
 Businesses have the ability to use Business Process Modeling (BPM) tools, such as Activiti~\cite{activiti_url} that rely on web standards to capture and describe their processes for non-technical users. Often, processes are expressed in XML, such as Business Process Modeling Notation (BPMN)~\cite{bpmn_spec_url} to describe interactions with web services expressed in Web Service Description Language (WSDL)~\cite{citeulike:99946}. Currently, there are no tools that support blockchain applications within their BPM toolset, which then leads to businesses having to rely on experts to integrate their existing processes with the novel blockchain paradigm. Furthermore, the current Ethereum protocol expresses its web APIs in an Application Binary Interface (ABI) format that is incompatible with existing BPM tools. Due to the non-standard ABI format, developers face the challenge of integrating blockchain web APIs into their tool sets without well-defined semantics, resulting in implementations that do not work the same way.
 
-Providing a standard layer to express the web services provided by the Ethereum protocol will allow integration of the Ethereum blockchain into existing BPM tools without modification. By providing this form of integration, the Ethereum blockchain can undergo data integration with a business? existing processes, including monitoring and logging. Furthermore, integration with existing tools provides an effective way to abstract the blockchain paradigm from non-technical users.
+Providing a standard layer to express the web services provided by the Ethereum protocol will allow integration of the Ethereum blockchain into existing BPM tools without modification. By providing this form of integration, the Ethereum blockchain can undergo data integration with a business' existing processes, including monitoring and logging. Furthermore, integration with existing tools provides an effective way to abstract the blockchain paradigm from non-technical users.
 
 \bibliography{references}
 \bibliographystyle{ieeetr}
