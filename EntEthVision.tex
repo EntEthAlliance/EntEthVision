@@ -7,16 +7,40 @@
 \usepackage{amssymb}
 \usepackage{epstopdf}
 \usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+%\usepackage{titling}
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
-\title{Enterprise Ethereum Vision {\scriptsize (v3.0)}}
-%\author{The Author}
-%\date{}                                           % Activate to display a given date or no date
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{}
+\fancyhead[R]{
+\vspace*{-2cm}\hspace*{15cm}\includegraphics[width=4cm]{figures/enterprise-ethereum-alliance.png}
+}
+
+%\pretitle{%
+%  \begin{center}
+%  \LARGE
+%  \includegraphics[width=6cm,height=2cm]{figures/enterprise-ethereum-alliance.png}\\[\bigskipamount]
+%}
+%\posttitle{\end{center}}
+
+%\includegraphics{figures/enterprise-ethereum-alliance.png}\\ 
+\pagestyle{plain}
+\title[Enterprise Ethereum Alliance Vision]{{Enterprise Ethereum Alliance - Vision}}
+% \hspace*{-4.9cm}
+% {\scriptsize (v3.0)}
+% 
+\author{{\scriptsize 28 February, 2017}}
+%\date{{\scriptsize Feb 28, 2017}}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
+\thispagestyle{fancy}
 \section{Executive Summary}
 
+%\includegraphics[trim=-50cm 0 0 -50cm,width=4cm]{figures/enterprise-ethereum-alliance.png}
+% \vspace*{-5cm}\hspace*{5cm}
 Enterprise use of blockchain technology has evolved at an almost unfathomable rate over the past 24 months. Through early bitcoin experiments, senior bankers joining start-ups, the launch of Ethereum, the creation of industry consortia, and countless conferences, blockchain has emerged as one of the top enterprise IT trends entering 2017.
 
 The market has already moved beyond the incubation phase where innovators effectively build the technology along with their initial applications, and possibly beyond the early adopter phase too. Increasingly, mainstream enterprise IT organizations are not only educating themselves and experimenting with blockchain but also are aiming to tackle novel use cases and complex IT challenges with the technology. More and more frequently, our clients are asking for assistance building MVPs not POCs, or hardening environments for production readiness.
@@ -80,7 +104,7 @@ Our contributions in this paper are as follows:
 
 \section{Short Term Vision}
 
-Enterprise Ethereum has four clear goals for 2017:
+Enterprise Ethereum has five clear goals for 2017:
 \begin{enumerate}
 \item Develop a sufficiently modular Ethereum implementation to separate and define clear interfaces between networking and storage layers -- that is a prototype for \emph{pluggable consensus} that minimizes the code changes required to switch consensus algorithms
   \begin{enumerate}
@@ -97,7 +121,7 @@ Enterprise Ethereum has four clear goals for 2017:
   \item Interface to the canonical next block hash
   \item Canonical design patterns
   \item Obfuscate private data while retaining overall system consistency
-  \item Observe the required abstractions to enhance protocol
+  \item Observe the required abstractions to enhance enterprise protocols
   \end{enumerate}
 \item Develop a clear set of capabilities and performance characteristics that suits the needs of enterprises
   \begin{enumerate}
