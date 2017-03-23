@@ -1,4 +1,5 @@
-\documentclass[11pt]{amsart}
+%\documentclass[11pt]{amsart}
+\documentclass[12pt]{article}
 \usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
 \geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
 %\geometry{landscape}                % Activate for for rotated page geometry
@@ -14,8 +15,8 @@
 
 \renewcommand{\headrulewidth}{0pt}
 \fancyhead[L]{}
-\fancyhead[R]{
-\vspace*{-2cm}\hspace*{15cm}\includegraphics[width=4cm]{figures/enterprise-ethereum-alliance.png}
+\fancyhead[C]{
+\vspace*{-1cm}\hspace*{0cm}\includegraphics[width=4cm]{figures/enterprise-ethereum-alliance.png}
 }
 
 %\pretitle{%
@@ -27,16 +28,24 @@
 
 %\includegraphics{figures/enterprise-ethereum-alliance.png}\\ 
 \pagestyle{plain}
-\title[Enterprise Ethereum Alliance Vision]{{Enterprise Ethereum Alliance - Vision}}
+\title{Enterprise Ethereum Alliance - Vision}
 % \hspace*{-4.9cm}
 % {\scriptsize (v3.0)}
 % 
-\author{{\scriptsize 28 February, 2017}}
+\author{{\scriptsize 22 March, 2017}}
+%\date{{\scriptsize 22 March, 2017}}
+\date{}
 %\date{{\scriptsize Feb 28, 2017}}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
+
 \thispagestyle{fancy}
+
+
+\tableofcontents
+\newpage
+
 \section{Executive Summary}
 
 %\includegraphics[trim=-50cm 0 0 -50cm,width=4cm]{figures/enterprise-ethereum-alliance.png}
@@ -65,7 +74,7 @@ But enterprises adopting Ethereum face a number of challenges, notably:
 
 As a result, many enterprises who have implemented private Ethereum networks have either 'tweaked' or forked open source implementations or have relied on proprietary vendor extensions to meet their deployment requirements. Some of these are extremely sophisticated and are on the cutting edge of computer science: witness the JP Morgan Quorum platform, Raiden, Parity, and HydraChain. While understandable, and in fact until now the only effective approach, the downsides are obvious: lack of application portability, code base fragmentation, and vendor lock-in.
 
-Not surprisingly, this has been a point of conversation for some months between enterprise technology vendors, corporate users and Ethereum startups. These discussions have expanded, with the blessing and involvement of Vitalik Buterin and the Ethereum Foundation, into a dedicated group of enterprise technology vendors, the largest corporate users and Ethereum infrastructure leaders collaborating to define a roadmap, legal structure, governance and initial technical developments to define 'Enterprise Ethereum'.
+Not surprisingly, this has been a point of conversation for some months between enterprise technology vendors, corporate users and Ethereum startups. These discussions have expanded, with the blessing and involvement of Vitalik Buterin and the Ethereum Alliance, into a dedicated group of enterprise technology vendors, the largest corporate users and Ethereum infrastructure leaders collaborating to define a roadmap, legal structure, governance and initial technical developments to define 'Enterprise Ethereum'.
 
 To some extent this parallels the paths of other significant platform technologies, such as TCP/IP and HTTP and perhaps (from a software perspective) more relevantly Java and Hadoop.
 
@@ -79,11 +88,11 @@ If you are a large corporate user of Ethereum and are interested in learning mor
 
 %[https://github.com/ethereum/wiki/wiki/White-Paper] 
 %[https://github.com/ethereum/yellowpaper]
-The Ethereum \cite{ethereum_wp} protocol is given as a concise, formal specification \cite{ethereum_yp} of a Turing-complete computation executed on a global virtual machine. The robustness of the Ethereum protocol is evident with the success of the public Ethereum network, with over \$1 billion dollars of transactions in around 2 years of existence.
+The Ethereum \cite{ethereum_wp} protocol is given as a concise, formal specification \cite{ethereum_yp} of a Turing-complete computation executed on a global virtual machine. The robustness of the Ethereum protocol is evident with the success of the public Ethereum network, with over \$2.5 billion dollars of transactions in around 2 years of existence.
 
 % [https://www.jpmorgan.com/quorum]
 % https://github.com/jpmorganchase/constellation
-As organizations integrate Ethereum blockchain technologies into their technology stacks, they have developed use cases that incorporate a diverse range of enterprise features which are not directly supported by the current Ethereum protocol. Enterprise features includes user and transaction privacy, scalable computation, and network connectivity. For example, a user who wishes to send transactions whose content is visible only to a specific set of users can choose to use J.P. Morgan's Quorum \cite{jpm_quorum}, a fork of the Ethereum Foundation's Geth client implementation. Messages sent over a public, permissioned network of Quorum nodes trigger execution of securely communicated \cite{jpm_constellation} transactions that update the private state database of all all specified private parties.
+As organizations integrate Ethereum blockchain technologies into their technology stacks, they have developed use cases that incorporate a diverse range of enterprise features which are not directly supported by the current Ethereum protocol. Enterprise features includes user and transaction privacy, scalable computation, and network connectivity. For example, a user who wishes to send transactions whose content is visible only to a specific set of users can choose to use J.P. Morgan's Quorum \cite{jpm_quorum}, a fork of the Ethereum Alliance's Geth client implementation. Messages sent over a public, permissioned network of Quorum nodes trigger execution of securely communicated \cite{jpm_constellation} transactions that update the private state database of all all specified private parties.
 
 Integrating Enterprise Ethereum protocol features into the Ethereum protocol is challenging for three reasons. First, most core Ethereum protocol changes are hard forks that require consideration, debate, consensus and adoption by the entire Ethereum community. Second, private, permissioned Ethereum-based networks are unable to easily leverage the public Ethereum network without well-defined support for differences in privacy and network connectivity. Third, integration of different block consensus mechanisms to address the Ethereum network's scalability, such as Proof of Work, Proof of Stake, and Proof of Authority, is unclear. These reasons encourage extending the Ethereum protocol and adding support for Ethereum Enterprise protocols in a way that does not rely on the current method of community-based consensus and software support over hard forks.
 
@@ -186,9 +195,9 @@ We have already invested heavily in developing a governance model for Enterprise
 \item Core membership participation in working groups
 \end{itemize}
 
-Enterprise Ethereum will almost certainly be instantiated as a US-based not for profit / foundation. Our legal team is exploring the specific options for this. Legally and practically, the Enterprise Ethereum Foundation will need a lead executive. Initially, we are proposing a volunteer Chair; we anticipate hiring an Executive Director to take on the day to day management functions in due course. The term of the Chair should be strictly limited - likely to one year. In addition, we anticipate a Board of Directors supervising the Chair (and Executive Director) and / or an Advisory Board.
+Enterprise Ethereum will almost certainly be instantiated as a US-based not for profit / alliance. Our legal team is exploring the specific options for this. Legally and practically, the Enterprise Ethereum Alliance will need a lead executive. Initially, we are proposing a volunteer Chair; we anticipate hiring an Executive Director to take on the day to day management functions in due course. The term of the Chair should be strictly limited - likely to one year. In addition, we anticipate a Board of Directors supervising the Chair (and Executive Director) and / or an Advisory Board.
 
-The Enterprise Ethereum Foundation will require administration: legal, financial, IP, PR, membership coordination, etc. We have viewed this administration as living in the Foundation, potentially staffed by Foundation personnel or volunteers. The Chair (and Executive Director) will be responsible for insuring this group is appropriately advancing. There has been a strong indication from members that they will want direct influence on marketing and communications, but still there are many day-to-day operations that are best managed proactively.
+The Enterprise Ethereum Alliance will require administration: legal, financial, IP, PR, membership coordination, etc. We have viewed this administration as living in the Alliance, potentially staffed by Alliance personnel or volunteers. The Chair (and Executive Director) will be responsible for insuring this group is appropriately advancing. There has been a strong indication from members that they will want direct influence on marketing and communications, but still there are many day-to-day operations that are best managed proactively.
 
 However, the core of Enterprise Ethereum is its members and member participation. Already, a number of areas are emerging as key member interest groups:
 
@@ -303,7 +312,7 @@ In the context of Enterprise Ethereum, whose goal is to coordinate Enterprise re
 
 In an Enterprise setting, organizations may participate within the community at multiple levels, such as developers and managers, and requiring each to have a github handle is not efficient. Instead, using the blockchain, while leveraging the existing git-based model, provides support for modern Enterprise Ethereum governance mechanisms (an 'eat-our-own-dog-food approach'). An Enterprise extension to the current EIP process onto the Ethereum blockchain is desirable for a few reasons. First, organizational involvement in the changes to the Enterprise Ethereum protocol would be captured as formal records. Second, by moving organizations intentions through smart contract, the process involving multiple organizations can be formalized and incentivized. Thus, by moving the governance architecture onto the Ethereum blockchain, organizations have a clear contractual mechanism by which to conduct their Enterprise Ethereum proposals and activities. 
 
-Several blockchain-based governance tools on are already in existence, under active development, with integration in progress. uPort is a self-sovereign identity platform that can support personal and organizational identity. It consists of a mobile app that manages users' keys and credentials to sign transactions, as well as developer libraries for simple integration.  uPort released a Developer Alpha version for preliminary testing and intends to support identity needs of the foundation. uPort is currently being incubated at ConsenSys. BoardRoom is an application for making and voting for proposals at an organizational level, committee level and project level. Balanc3 is currently in active development and will be able to create financial assets, transfer, and report all financial transactions. 
+Several blockchain-based governance tools on are already in existence, under active development, with integration in progress. uPort is a self-sovereign identity platform that can support personal and organizational identity. It consists of a mobile app that manages users' keys and credentials to sign transactions, as well as developer libraries for simple integration.  uPort released a Developer Alpha version for preliminary testing and intends to support identity needs of the alliance. uPort is currently being incubated at ConsenSys. BoardRoom is an application for making and voting for proposals at an organizational level, committee level and project level. Balanc3 is currently in active development and will be able to create financial assets, transfer, and report all financial transactions. 
 
 % on January 4th, 2017
 % by the end of February 2017
@@ -331,13 +340,13 @@ There are efforts in the broader distributed ledger ecosystem which are attempti
 While hardware-based approaches provide performant security features, hardware solutions rely on expense and vendor trust. Secure hardware is prevalent in server environments, and its prevalence continues to increase through integration in IoT and network infrastructure; however, due to the myriad of solutions without a standardized API, hardware is more challenging to support. Enterprise needs depend on the level of trust of actors working together in a permissioned enviornment. As a result, there is also a desire to support software-based enclaves as an option; open source enables community review and reduces cost. 
 As security needs in blockchain technology evolves, enterprises will be able to better understand and provide additional offerings.
 
-While the Ethereum Enterprise initiative will focus on protocol level implementations at the onset, with time, efforts to establish meaningful design patterns around oracle data (and perhaps more importantly, how to apply penalties for bad actors publishing malicious data) are expected to emerge from members of the Foundation. 
+While the Ethereum Enterprise initiative will focus on protocol level implementations at the onset, with time, efforts to establish meaningful design patterns around oracle data (and perhaps more importantly, how to apply penalties for bad actors publishing malicious data) are expected to emerge from members of the Alliance. 
 
 \subsection{Storage}
 
 Many decentralized applications could benefit from decentralized storage in addition to the blockchain. While it is possible to store arbitrary content in the blockchain, the blockchain is neither cost-effective nor efficient for file storage. Immutable, content-addressable storage systems off-chain are better suited to such needs. These systems seek to decouple the authoring of content from the long-term hosting of that content.
 
-There are two projects with very similar goals which are leading development efforts in this area. The first is IPFS, led by Juan Benet of Protocol Labs. The second is Swarm, funded by the Ethereum Foundation, which has long been envisaged as a central pillar of the Web3 vision, alongside Ethereum and Whisper.
+There are two projects with very similar goals which are leading development efforts in this area. The first is IPFS, led by Juan Benet of Protocol Labs. The second is Swarm, funded by the Ethereum Alliance, which has long been envisaged as a central pillar of the Web3 vision, alongside Ethereum and Whisper.
 
 A number of Ethereum projects are already using IPFS, which is in a more mature state than Swarm. Both projects have two conceptual layers - a chunking file system layer and an incentives layer. See IPFS and Swarm summary, written by Viktor Tron. The incentives layers for both systems are both in their early days, but will both be built using Ethereum. The design of the incentives layers will be key to the long-term success of these systems.
 
@@ -375,7 +384,48 @@ Businesses have the ability to use Business Process Modeling (BPM) tools, such a
 
 Providing a standard layer to express the web services provided by the Ethereum protocol will allow integration of the Ethereum blockchain into existing BPM tools without modification. By providing this form of integration, the Ethereum blockchain can undergo data integration with a business' existing processes, including monitoring and logging. Furthermore, integration with existing tools provides an effective way to abstract the blockchain paradigm from non-technical users.
 
+\section{Acknowledgements}
+
+
+Primary Editors and Contributors:
+Joseph Lubin (ConsenSys), Jeremy Millar (ConsenSys), Vitalik Buterin (Ethereum Foundation), Dr. Shahan Khatchadourian (ConsenSys)
+\\
+
+Reviewers and Contributors:
+Ramesh Babu (WiPro), 
+Amber Baldet (J.P. Morgan),
+Chris Broderson (Accenture), 
+Ethan Buchman (Tendermint),
+Preston Byrne (Monax Industries), 
+Joseph Chow (ConsenSys), 
+Matt Corva (ConsenSys),
+Kirk Dameron (ConsenSys), 
+Dr. Julio Faura Enriquez (Santander), 
+Samer Falah (J.P. Morgan), 
+Marley Gray (Microsoft),
+Dr. Jared Harwayne-Gidansky (BNY Mellon),
+Heiko Hess (BrainBot), 
+Kieren James-Lubin (BlockApps), 
+Andrew Keys (ConsenSys),
+Toon Leijtens (ING), 
+Igor Lilic (ConsenSys), 
+Tyrone Lobban (J.P. Morgan), 
+Greg Meredith (RChain), 
+Dr. Andrew Miller (IC3),
+Patrick Mylund Nielsen (J.P. Morgan),
+Yorke Rhodes III (Microsoft), 
+Tyler Smith (BHP Billiton),
+Matthew Spoke (Nuco), 
+Bob Summerwill (ConsenSys), 
+Russell Verbeeten (ConsenSys),
+David Voell (J.P. Morgan), 
+John Whelan (Santander), 
+Dominic Williams (String Labs), 
+Victor Wong (BlockApps)
+
+
 \bibliography{references}
-\bibliographystyle{ieeetr}
+%\bibliographystyle{ieeetr}
+\bibliographystyle{plain}
 
 \end{document}  
